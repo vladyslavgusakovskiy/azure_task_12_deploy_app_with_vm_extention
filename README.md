@@ -1,8 +1,6 @@
 # Create a Virtual Machine with Powershell
 
-Now, when you learned aboud the SLA and availability, you know that with a single VM in Azure you are guaranteed to have only 99.9% of the VM uptime. That meant that your app can be unavailable for more than 40 minutes a week and you won't get any refund or discounts! Luckily, there are number of options you can affect the SLA for your VM infrastructure, and today you will explore one of them - availability zones. 
-
-For two VMs, deployed to two distinct availability zones you will get 99.99% uptime SLA. It means that both VMs can be unavaiable at the same moment of time no longer than 4 minutes each month. In this task you will practice deploying VMs to availability zones. 
+VMs are deployed with the script, you can deploy as many VMs as you need just by updating one script variable, but you still need to connect to the VM with SSH and install the app manually. Well, today we are going to fix it! In this task you will learn how to use VM extention to automate deployment of your app to the VM. 
 
 ## How to complete tasks in this module 
 
@@ -58,7 +56,7 @@ If you are a Windows user, before running this command, please also run the foll
 
 ## Requirements
 
-In this task, you will need to write and run a Powershell script, which deploys 2 Virtual Machines across 2 distinct availability zones: 
+In this task, you will need to write and run a Powershell script, which deploys a virtual machines and uses custom script VM extention to deploy a web app:  
 
 1. Write your script code to the file 'task.ps1' in this repository:
     
