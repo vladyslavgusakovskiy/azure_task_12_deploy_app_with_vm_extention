@@ -58,13 +58,13 @@ If you are a Windows user, before running this command, please also run the foll
 
 In this task, you will need to write and run a Powershell script, which deploys a virtual machines and uses custom script VM extention to deploy a web app:  
 
-1. Write your script code to the file 'task.ps1' in this repository:
+1. Write your script code to the file `task.ps1` in this repository:
     
     - In script, you should assume that you are already logged in to Azure and using correct subscription (don't use commands 'Connect-AzAccount' and 'Set-AzContext', if needed - just run them on your computer before running the script). 
 
-    - Use any region you want, for example `uksouth`. 
-
-    - Script already have code, which deploys single VM with no infrasstcuture redundancy. Update the code to deploy 2 VMs into 2 distinct availability zones. Check the documentation of [New-AzVm](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvm?view=azps-11.5.0) comandlet to learn how to set an availability zone during VM creation. 
+    - Script already have code, which deploys a VM. Update the code to deploy a web app  
+    
+    Update the code to deploy 2 VMs into 2 distinct availability zones. Check the documentation of [New-AzVm](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvm?view=azps-11.5.0) comandlet to learn how to set an availability zone during VM creation. 
     
     - Both VMs should be deployed to the `default` subnet of the virtual network `vnet`, use network security group `defaultnsg`, and ssh key `linuxboxsshkey` (check the documentation of [New-AzVm](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvm?view=azps-11.5.0) - it allows you to just specify names of those resources as comandlet parameters). 
 
