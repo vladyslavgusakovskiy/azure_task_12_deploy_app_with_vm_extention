@@ -1,6 +1,8 @@
 # Create a Virtual Machine with Powershell
 
-VMs are deployed with the script, you can deploy as many VMs as you need just by updating one script variable, but you still need to connect to the VM with SSH and install the app manually. Well, today we are going to fix it! In this task you will learn how to use VM extention to automate deployment of your app to the VM. 
+VMs are deployed with the script, you can deploy as many VMs as you need just by updating one script variable, but you still need to connect to the VM with SSH and install the app manually. Well, today we are going to fix it! 
+
+In this task you will learn how to use VM extention to automate deployment of your app to the VM. The result script will allow you to deploy a VM and install the todo web app to it without any manuall actions, only by running the Powershell script. 
 
 ## How to complete tasks in this module 
 
@@ -62,17 +64,15 @@ In this task, you will need to write and run a Powershell script, which deploys 
     
     - In script, you should assume that you are already logged in to Azure and using correct subscription (don't use commands 'Connect-AzAccount' and 'Set-AzContext', if needed - just run them on your computer before running the script). 
 
-    - Script already have code, which deploys a VM. Update the code to deploy a web app  
-    
-    Update the code to deploy 2 VMs into 2 distinct availability zones. Check the documentation of [New-AzVm](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvm?view=azps-11.5.0) comandlet to learn how to set an availability zone during VM creation. 
-    
-    - Both VMs should be deployed to the `default` subnet of the virtual network `vnet`, use network security group `defaultnsg`, and ssh key `linuxboxsshkey` (check the documentation of [New-AzVm](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvm?view=azps-11.5.0) - it allows you to just specify names of those resources as comandlet parameters). 
+    - Script already have code, which deploys a VM. Update the code so it will deploy a web app from this repo using a custom script VM extention. 
 
-    - VMs should use image with friendly name `Ubuntu2204` and size `Standard_B1s`.
+    - To deploy an extention, use [Set-AzVMExtention](https://learn.microsoft.com/en-us/azure/virtual-machines/extensions/features-linux?tabs=azure-powershell#azure-powershell-1) comandlet. 
 
-    - Note that in this task you are not required to deploy a pubclic IP resource for the VMs. 
+    - Extention should run a script `install-app.sh`, which should be loaded from your fork of this repo. In your for, the script will be available by the URL: `https://raw.githubusercontent.com/<your-github-username>/azure_task_12_deploy_app_with_vm_extention/main/install-app.sh`
 
-2. When script is ready, run it to deploy resources to your subcription. 
+    - Make sure to review and update script `install-app.sh` - it should clone your fork of this repo to the VM. Take a note, that as `install-app.sh` will be downloaded by your VM from the GitHub, you need to commit and push changes to it before running the Powershell code which deploys the extention. 
+
+2. When script is ready, run it to deploy resources to your subcription. Make sure that script is working without errors, and that application is available on port 8080 after you run the script. To verify that web application is running, open in a web browser the following URL: `http://<your-public-ip-DNS-name>:8080`.
 
 3. Run artifacts generation script `scripts/generate-artifacts.ps1`.
 

@@ -30,8 +30,8 @@ if ($scriptContent | Where-Object {$_.Contains("New-AzVm")}) {
     throw "Script is not creating a VM resource, please review it. "
 } 
 
-if ($scriptContent | Where-Object {$_.Contains("-Zone")}) {
-    Write-Host "Checking if script has a zone assignment - ok" 
+if ($scriptContent | Where-Object {$_.Contains("Set-AzVMExtension")}) {
+    Write-Host "Checking if script creates a VM extention resource - ok" 
 } else { 
-    throw "Script does not contain a zone assignment for the VM creation, please review it. "
+    throw "Script is not creating a VM extention resource with a Set-AzVMExtension comandled, please review it. "
 } 
