@@ -45,7 +45,7 @@ $Params = @{
     Publisher          = 'Microsoft.Azure.Extensions'
     ExtensionType      = 'CustomScript'
     TypeHandlerVersion = '2.1'
-    Settings          = @{fileUris = @('https://raw.githubusercontent.com/me/project/hello.sh'); commandToExecute = './hello.sh'}
+    Settings          = @{fileUris = @('https://raw.githubusercontent.com/mate-academy/azure_task_12_deploy_app_with_vm_extention/main/install-app.sh'); commandToExecute = './install-app.sh'}
 }
 
 Set-AzVMExtension @Params
